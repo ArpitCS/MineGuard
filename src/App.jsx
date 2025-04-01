@@ -10,6 +10,8 @@ import GloveIcon from './components/GloveIcon';
 import { FaTemperatureHigh, FaHeartbeat, FaTint, FaWind, FaLightbulb, FaExclamationTriangle, FaUser } from 'react-icons/fa';
 import { FaMaskVentilator } from 'react-icons/fa6';
 
+import logoImg from './assets/logo.png';
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDBqzSBXPemW9tjY3mtK8wu40Nc7var_Uw",
@@ -211,8 +213,9 @@ function App() {
       {/* Top navigation bar */}
       <nav className="navbar">
         <div className="logo">
-          <span className="logo-icon">⛑️</span>
-          <h1>MineGuard</h1>
+          <span className="logo-icon">
+            <img src={logoImg} className='logo-img' />
+          </span>
         </div>
         <div className="nav-links">
           <button className="nav-link active">Dashboard</button>

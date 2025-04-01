@@ -92,8 +92,8 @@ body {
   gap: 0.75rem;
 }
 
-.logo-icon {
-  font-size: 1.75rem;
+.logo-img {
+  width: 150px;
 }
 
 .logo h1 {
