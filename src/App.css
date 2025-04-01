@@ -1,0 +1,826 @@
+
+/* Main CSS for MineGuard Dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Primary color palette */
+  --primary-dark: #1a4b78;
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-bg: #f0f7ff;
+  
+  /* Secondary colors */
+  --secondary: #0f172a;
+  --secondary-light: #334155;
+  
+  /* Status colors */
+  --success: #059669;
+  --success-light: #d1fae5;
+  --warning: #d97706;
+  --warning-light: #fef3c7;
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+  --info: #3b82f6;
+  --info-light: #dbeafe;
+  
+  /* Neutral colors */
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Box shadow */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Border radius */
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--gray-100);
+  color: var(--gray-800);
+  line-height: 1.5;
+}
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  font-size: 1.75rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--gray-100);
+  color: var(--primary);
+}
+
+.nav-link.active {
+  background-color: var(--primary-bg);
+  color: var(--primary);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+}
+
+.user-profile:hover {
+  background-color: var(--gray-100);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info span {
+  font-weight: 500;
+  color: var(--gray-800);
+  font-size: 0.9rem;
+}
+
+.user-info small {
+  color: var(--gray-500);
+  font-size: 0.75rem;
+}
+
+/* Dashboard container */
+.dashboard-container {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--gray-100);
+}
+
+/* Summary Row */
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.summary-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+/* Miner details */
+.miner-details {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.miner-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.miner-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.miner-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.miner-info p strong {
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-right: 0.5rem;
+}
+
+/* Equipment status */
+.equipment-status {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.equipment-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 70px;
+  text-align: center;
+}
+
+.equipment-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.equipment-icon.active {
+  background-color: rgba(5, 150, 105, 0.15);
+  color: var(--success);
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.3);
+}
+
+.equipment-icon.inactive {
+  background-color: rgba(220, 38, 38, 0.15);
+  color: var(--danger);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3);
+}
+
+.equipment-item p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-button {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.action-button.primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.action-button.primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.action-button.secondary {
+  background-color: var(--gray-200);
+  color: var(--gray-700);
+}
+
+.action-button.secondary:hover {
+  background-color: var(--gray-300);
+}
+
+.action-button.danger {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+.action-button.danger:hover {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Score Row */
+.score-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.score-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.score-card.good::before {
+  background-color: var(--success);
+}
+
+.score-card.warning::before {
+  background-color: var(--warning);
+}
+
+.score-card.danger::before {
+  background-color: var(--danger);
+}
+
+.score-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.score-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.score-card.good .score-value {
+  color: var(--success);
+}
+
+.score-card.warning .score-value {
+  color: var(--warning);
+}
+
+.score-card.danger .score-value {
+  color: var(--danger);
+}
+
+.score-gauge {
+  position: relative;
+  height: 8px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.gauge-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--gray-200);
+}
+
+.gauge-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 1s ease-in-out;
+}
+
+.score-card.good .gauge-fill {
+  background-color: var(--success);
+}
+
+.score-card.warning .gauge-fill {
+  background-color: var(--warning);
+}
+
+.score-card.danger .gauge-fill {
+  background-color: var(--danger);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-section {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.health-section, .environment-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.safety-section {
+  grid-column: 1 / -1;
+}
+
+.dashboard-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-card {
+  flex: 1;
+  min-width: 160px;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-card.normal {
+  background-color: var(--success-light);
+}
+
+.dashboard-card.warning {
+  background-color: var(--warning-light);
+}
+
+.dashboard-card.danger {
+  background-color: var(--danger-light);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card.normal .card-icon {
+  background-color: rgba(5, 150, 105, 0.2);
+  color: var(--success);
+}
+
+.dashboard-card.warning .card-icon {
+  background-color: rgba(217, 119, 6, 0.2);
+  color: var(--warning);
+}
+
+.dashboard-card.danger .card-icon {
+  background-color: rgba(220, 38, 38, 0.2);
+  color: var(--danger);
+}
+
+.dashboard-card h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  text-align: center;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.card-value span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-500);
+}
+
+.card-status {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.dashboard-card.normal .card-status {
+  background-color: var(--success);
+  color: var(--white);
+}
+
+.dashboard-card.warning .card-status {
+  background-color: var(--warning);
+  color: var(--white);
+}
+
+.dashboard-card.danger .card-status {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+/* Chart container */
+.chart-container {
+  margin-top: 1.5rem;
+}
+
+.chart-container h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 1rem;
+}
+
+/* Safety status large */
+.equipment-status-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.equipment-status-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.equipment-status-card.active {
+  background-color: var(--success-light);
+  border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+.equipment-status-card.inactive {
+  background-color: var(--danger-light);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.equipment-status-icon {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.equipment-status-card.active .equipment-status-icon {
+  background-color: rgba(5, 150, 105, 0.2);
+  color: var(--success);
+}
+
+.equipment-status-card.inactive .equipment-status-icon {
+  background-color: rgba(220, 38, 38, 0.2);
+  color: var(--danger);
+}
+
+.equipment-status-info {
+  flex: 1;
+}
+
+.equipment-status-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.equipment-status-value {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.equipment-status-card.active .equipment-status-value {
+  color: var(--success);
+}
+
+.equipment-status-card.inactive .equipment-status-value {
+  color: var(--danger);
+}
+
+/* Alert modal */
+.alert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  animation: fadeIn 0.3s ease;
+}
+
+.alert-modal-content {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: slideIn 0.3s ease;
+}
+
+.alert-modal-content svg {
+  color: var(--danger);
+}
+
+.alert-modal-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.alert-modal-content p {
+  color: var(--gray-600);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.75rem;
+  }
+  
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.75rem;
+  }
+  
+  .dashboard-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .summary-row,
+  .score-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dashboard-cards {
+    flex-direction: column;
+  }
+  
+  .dashboard-card {
+    width: 100%;
+  }
+}
+
+/* Recharts customizations */
+.recharts-responsive-container {
+  margin-bottom: 2rem !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--gray-200) !important;
+}
+
+.recharts-xAxis line,
+.recharts-yAxis line {
+  stroke: var(--gray-300) !important;
+}
+
+.recharts-xAxis text,
+.recharts-yAxis text {
+  font-size: 0.75rem !important;
+  fill: var(--gray-500) !important;
+}
+
+.recharts-legend-item-text {
+  font-size: 0.8rem !important;
+  color: var(--gray-700) !important;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.recharts-tooltip-label {
+  font-weight: 600 !important;
+  color: var(--gray-700) !important;
+}
+
+/* Bar chart customizations */
+.recharts-bar rect {
+  transition: fill 0.3s ease;
+}
